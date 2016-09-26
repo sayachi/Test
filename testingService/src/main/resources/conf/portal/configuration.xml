@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://www.exoplaform.org/xml/ns/kernel_1_0.xsd http://www.exoplaform.org/xml/ns/kernel_1_0.xsd"
+               xmlns="http://www.exoplaform.org/xml/ns/kernel_1_0.xsd">
+
+    <component>
+        <key>com.exoplatform.project.MyService</key>
+        <type>com.exoplatform.project.MyService</type>
+    </component>
+
+    <!-- <component>
+        <key>com.exoplatform.project.MyListener</key>
+        <type>com.exoplatform.project.MyListener</type>
+    </component> -->
+
+   <external-component-plugins>
+
+        <target-component>org.exoplatform.services.scheduler.JobSchedulerService</target-component>
+
+        <component-plugin>
+
+            <name>DumbJob</name>
+
+            <set-method>addPeriodJob</set-method>
+
+            <type>org.exoplatform.services.scheduler.PeriodJob</type>
+
+            <description>DumbJob</description>
+
+            <init-params>
+
+                <properties-param>
+
+                    <name>job.info</name>
+
+                    <description>MyJob</description>
+
+                    <property name="jobName" value="MyJob" />
+
+                    <property name="groupName" value="MyGroup" />
+
+                    <property name="job" value="com.exoplatform.project.MyJob" />
+
+                    <property name="repeatCount" value="0" />
+
+                    <property name="period" value="60000" />
+
+                    <property name="startTime" value="+45" />
+
+                    <property name="endTime" value="" />
+
+                </properties-param>
+
+            </init-params>
+
+        </component-plugin>
+
+    </external-component-plugins>
+
+
+
+    <external-component-plugins>
+
+        <target-component>org.exoplatform.services.organization.OrganizationService</target-component>
+
+        <component-plugin>
+
+            <name>my.new.user.event.listener</name>
+
+            <set-method>addListenerPlugin</set-method>
+
+            <type>com.exoplatform.project.MyListener</type>
+            <!--<type>org.exoplatform.listener.MyUserListener</type>-->
+
+            <description>description</description>
+
+
+        </component-plugin>
+
+
+    </external-component-plugins>
+</configuration>
+
+
